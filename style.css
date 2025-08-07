@@ -295,4 +295,48 @@
 +      handleMove('right');
 +    }
 +  });
+/* Simple climber representation. It's placed above the bottom controls. */
+-#climber {
+-  position: absolute;
+-  bottom: 70px;
+-  left: 50%;
+-  transform: translateX(-50%);
+-  width: 32px;
+-  height: 40px;
+-  background-color: #555;
+-  border-radius: 4px;
+-}
++/* Parallax container and layers stack behind the game and scroll horizontally. */
++#parallaxContainer {
++  position: absolute;
++  top: 0;
++  left: 0;
++  width: 100%;
++  height: 100%;
++  overflow: hidden;
++  z-index: 0;
++  pointer-events: none;
++}
++.parallax-layer {
++  position: absolute;
++  top: 0;
++  left: 0;
++  width: 100%;
++  height: 100%;
++  background-repeat: repeat-x;
++  background-position: 0 0;
++  background-size: cover;
++  pointer-events: none;
++}
++/* Canvas used to draw the animated climber sprite. It sits above the holds but below the UI. */
++#climberCanvas {
++  position: absolute;
++  bottom: 70px;
++  left: 50%;
++  transform: translateX(-50%);
++  width: 80px;
++  height: 200px;
++  z-index: 2;
++  pointer-events: none;
++}
 *** End Patch
