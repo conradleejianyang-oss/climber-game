@@ -1,0 +1,172 @@
+/*
+ * Styles for the climbing game.
+ *
+ * The layout uses simple positioning to align the various elements: score,
+ * timer bar, holds, climber and on‑screen controls. Colours are kept
+ * neutral so the focus is on gameplay rather than graphics. Feel free to
+ * tweak these values to personalise the look and feel.
+ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  background: linear-gradient(180deg, #7ab5e4 0%, #4b79a5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#gameContainer {
+  position: relative;
+  width: 220px;
+  height: 480px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Display score in the upper left of the game container */
+#score {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Container for the timer bar; sits in upper right. */
+#timeBarContainer {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 120px;
+  height: 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+/* The time bar itself. Its width shrinks as time runs out. */
+#timeBar {
+  height: 100%;
+  width: 100%;
+  background-color: #4caf50;
+  transition: width 0.1s linear;
+}
+
+/* Holds container: occupies the middle of the game area. */
+#rockContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 70px;
+  height: 360px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+
+/* Individual hold styling. Each hold has a pseudo element representing the rock on
+ * either side of the climb. The background of the hold itself remains
+ * transparent so only the pseudo element is visible. */
+.rock {
+  position: relative;
+  height: 30px;
+  margin-bottom: 2px;
+}
+
+.rock::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  width: 36px;
+  height: 16px;
+  background-color: #795548;
+  border-radius: 4px;
+}
+
+.rock.left::before {
+  left: 10px;
+}
+
+.rock.right::before {
+  right: 10px;
+}
+
+/* Simple climber representation. It's placed above the bottom controls. */
+#climber {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 40px;
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* Control buttons at bottom. */
+#controls {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
+}
+
+#controls button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 10px 0;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+#controls button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Overlays for the start screen and game over screen. They cover the entire game area. */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.overlayContent {
+  max-width: 80%;
+}
+
+.overlay h1 {
+  margin-top: 0;
+}
+
+/* Hide elements when they should not be visible. */
+.hidden {
+  display: none;
+}
