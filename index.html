@@ -1,13 +1,46 @@
- <!-- The column of holds. Each hold will be dynamically generated in script.js -->
-     <div id="rockContainer"></div>
--    <!-- A simple representation of the climber. In this MVP the character is a block. -->
--    <div id="climber"></div>
-+    <!-- Parallax background layers. These are stacked behind the game elements and scrolled at different speeds. -->
-+    <div id="parallaxContainer">
-+      <div id="layer1" class="parallax-layer"></div>
-+      <div id="layer2" class="parallax-layer"></div>
-+      <div id="layer3" class="parallax-layer"></div>
-+      <div id="layer4" class="parallax-layer"></div>
-+    </div>
-+    <!-- Canvas used to draw the animated climber from the sprite sheet. -->
-+    <canvas id="climberCanvas" width="80" height="200"></canvas>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climbing Game MVP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- The main game container holds everything related to the play state. -->
+  <div id="gameContainer">
+    <!-- Current score is displayed in the top‑left corner. -->
+    <div id="score">Score: 0</div>
+    <!-- A shrinking bar that represents the time remaining for the current move. -->
+    <div id="timeBarContainer">
+      <div id="timeBar"></div>
+    </div>
+    <!-- The column of holds. Each hold will be dynamically generated in script.js -->
+    <div id="rockContainer"></div>
+    <!-- A simple representation of the climber. In this MVP the character is a block. -->
+    <div id="climber"></div>
+    <!-- Buttons for touch and desktop play. Pressing them triggers the same logic as arrow keys. -->
+    <div id="controls">
+      <button id="leftBtn" aria-label="Move left">Left</button>
+      <button id="rightBtn" aria-label="Move right">Right</button>
+    </div>
+    <!-- Overlay for the start screen. Hidden once the game starts. -->
+    <div id="startScreen" class="overlay">
+      <div class="overlayContent">
+        <h1>Climbing Challenge</h1>
+        <p>Press the button below or use your arrow keys to start climbing.</p>
+        <button id="startBtn">Start</button>
+      </div>
+    </div>
+    <!-- Overlay shown when the game ends. Includes the final score and restart button. -->
+    <div id="gameOver" class="overlay hidden">
+      <div class="overlayContent">
+        <h1>Game Over</h1>
+        <p id="finalScore"></p>
+        <button id="restartBtn">Play Again</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
